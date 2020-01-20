@@ -12,15 +12,16 @@
     <div class="ui grid container" style="margin: 40px!important">
       <br>
       <div class="row">
-        <h2>Training set Cluster 2</h2>
+        <h2>Training set Cluster 3</h2>
         <?php
-          $query = $db->query("UPDATE tb_training SET C2DC1='0', C2DC2='0', C_before='', C_after='', hasil='0'");
+          $query = $db->query("UPDATE tb_training SET C3DC1='0', C3DC2='0', C3DC3='0', C_before='', C_after='', hasil='0'");
           $query = $db->query("SELECT * FROM tb_training");
           $rowCount = $query->rowCount();
           do {
             $acak_C1 = rand(1, $rowCount);
             $acak_C2 = rand(1, $rowCount);
-          } while ($acak_C1 == $acak_C2);
+            $acak_C3 = rand(1, $rowCount);
+          } while ($acak_C1 == $acak_C2 && $acak_C1 == $acak_C3 && $acak_C2 == $acak_C3);
         ?>
       </div>
       <div class="row">
@@ -80,7 +81,7 @@
                 ?>
               </tr>
               <tr>
-                <td>CLuster 2</td>
+                <td>Cluster 2</td>
                 <?php
                   $acak_C2 = 2;
                   $query = $db->query("SELECT Daya_WBP_1, Daya_LWBP_1, Daya_WBP_2, Daya_LWBP_2, Daya_WBP_3, Daya_LWBP_3, Daya_WBP_4, Daya_LWBP_4, Daya_WBP_5, Daya_LWBP_5, Daya_WBP_6, Daya_LWBP_6, Daya_WBP_7, Daya_LWBP_7 FROM tb_training WHERE pelanggan = '$acak_C2'");
@@ -98,6 +99,51 @@
                 <?php
                     }
                   }
+                ?>
+              </tr>
+              <tr>
+                <td>Cluster 3</td>
+                <?php
+                  $acak_C3 = 3;
+                  $query = $db->query("SELECT Daya_WBP_1, Daya_LWBP_1, Daya_WBP_2, Daya_LWBP_2, Daya_WBP_3, Daya_LWBP_3, Daya_WBP_4, Daya_LWBP_4, Daya_WBP_5, Daya_LWBP_5, Daya_WBP_6, Daya_LWBP_6, Daya_WBP_7, Daya_LWBP_7 FROM tb_training WHERE pelanggan = '$acak_C3'");
+                  while ($result = $query->fetch()) {
+                    $C3_Daya_WBP_1=$result['Daya_WBP_1']; $C3_Daya_LWBP_1=$result['Daya_LWBP_1'];
+                    $C3_Daya_WBP_2=$result['Daya_WBP_2']; $C3_Daya_LWBP_2=$result['Daya_LWBP_2'];
+                    $C3_Daya_WBP_3=$result['Daya_WBP_3']; $C3_Daya_LWBP_3=$result['Daya_LWBP_3'];
+                    $C3_Daya_WBP_4=$result['Daya_WBP_4']; $C3_Daya_LWBP_4=$result['Daya_LWBP_4'];
+                    $C3_Daya_WBP_5=$result['Daya_WBP_5']; $C3_Daya_LWBP_5=$result['Daya_LWBP_5'];
+                    $C3_Daya_WBP_6=$result['Daya_WBP_6']; $C3_Daya_LWBP_6=$result['Daya_LWBP_6'];
+                    $C3_Daya_WBP_7=$result['Daya_WBP_7']; $C3_Daya_LWBP_7=$result['Daya_LWBP_7'];
+                    for ($i=0; $i < 14; $i++) {
+                ?>
+                <td><?php echo $result[$i] ?></td>
+                <?php
+                    }
+                  }
+                ?>
+              </tr>
+              <tr>
+                <?php
+                  $query = $db->query("SELECT * FROM tb_training");
+                  while ($result = $query->fetch()) {
+                    $pelanggan = $result['pelanggan'];
+                    $DC1 =
+                      sqrt(
+                        pow(($result['Daya_WBP_1']-$C1_Daya_WBP_1), 2) + pow(($result['Daya_LWBP_1']-$C1_Daya_LWBP_1), 2) +
+                        pow(($result['Daya_WBP_2']-$C1_Daya_WBP_2), 2) + pow(($result['Daya_LWBP_2']-$C1_Daya_LWBP_2), 2) +
+                        pow(($result['Daya_WBP_3']-$C1_Daya_WBP_3), 2) + pow(($result['Daya_LWBP_3']-$C1_Daya_LWBP_3), 2) +
+                        pow(($result['Daya_WBP_4']-$C1_Daya_WBP_4), 2) + pow(($result['Daya_LWBP_4']-$C1_Daya_LWBP_4), 2) +
+                        pow(($result['Daya_WBP_5']-$C1_Daya_WBP_5), 2) + pow(($result['Daya_LWBP_5']-$C1_Daya_LWBP_5), 2) +
+                        pow(($result['Daya_WBP_6']-$C1_Daya_WBP_6), 2) + pow(($result['Daya_LWBP_6']-$C1_Daya_LWBP_6), 2) +
+                        pow(($result['Daya_WBP_7']-$C1_Daya_WBP_7), 2) + pow(($result['Daya_LWBP_7']-$C1_Daya_LWBP_7), 2)
+                      );
+                  }
+                ?>
+                <td colspan="3">DC1</td>
+                <td colspan="12"><?php echo $DC1 ?></td>
+              </tr>
+              <tr>
+                <?php
                   $query = $db->query("SELECT * FROM tb_training");
                   while ($result = $query->fetch()) {
                     $pelanggan = $result['pelanggan'];
@@ -112,22 +158,40 @@
                         pow(($result['Daya_WBP_7']-$C2_Daya_WBP_7), 2) + pow(($result['Daya_LWBP_7']-$C2_Daya_LWBP_7), 2)
                       );
                   }
-                  if ($DC1 < $DC2) {
-                    $C = 'C1';
-                  } else {
-                    $C = 'C2';
-                  }
-                  $query = $db->query("UPDATE tb_training SET C2DC1='$DC1', C2DC2='$DC2', C_before='$C' WHERE pelanggan='$pelanggan'");
                 ?>
-              </tr>
-              <tr>
-                <td colspan="3">DC1</td>
-                <td colspan="12"><?php echo $DC1 ?></td>
-              </tr>
-              <tr>
                 <td colspan="3">DC2</td>
                 <td colspan="12"><?php echo $DC2 ?></td>
               </tr>
+              <tr>
+                <?php
+                  $query = $db->query("SELECT * FROM tb_training");
+                  while ($result = $query->fetch()) {
+                    $pelanggan = $result['pelanggan'];
+                    $DC3 =
+                      sqrt(
+                        pow(($result['Daya_WBP_1']-$C3_Daya_WBP_1), 2) + pow(($result['Daya_LWBP_1']-$C3_Daya_LWBP_1), 2) +
+                        pow(($result['Daya_WBP_2']-$C3_Daya_WBP_2), 2) + pow(($result['Daya_LWBP_2']-$C3_Daya_LWBP_2), 2) +
+                        pow(($result['Daya_WBP_3']-$C3_Daya_WBP_3), 2) + pow(($result['Daya_LWBP_3']-$C3_Daya_LWBP_3), 2) +
+                        pow(($result['Daya_WBP_4']-$C3_Daya_WBP_4), 2) + pow(($result['Daya_LWBP_4']-$C3_Daya_LWBP_4), 2) +
+                        pow(($result['Daya_WBP_5']-$C3_Daya_WBP_5), 2) + pow(($result['Daya_LWBP_5']-$C3_Daya_LWBP_5), 2) +
+                        pow(($result['Daya_WBP_6']-$C3_Daya_WBP_6), 2) + pow(($result['Daya_LWBP_6']-$C3_Daya_LWBP_6), 2) +
+                        pow(($result['Daya_WBP_7']-$C3_Daya_WBP_7), 2) + pow(($result['Daya_LWBP_7']-$C3_Daya_LWBP_7), 2)
+                      );
+                  }
+                ?>
+                <td colspan="3">DC3</td>
+                <td colspan="12"><?php echo $DC3 ?></td>
+              </tr>
+              <?php
+                if(min($DC1, $DC2, $DC3) == $DC1) {
+                  $C = 'C1';
+                } else if(min($DC1, $DC2, $DC3) == $DC2) {
+                  $C = 'C2';
+                } else if(min($DC1, $DC2, $DC3) == $DC3) {
+                  $C = 'C3';
+                }
+                $query = $db->query("UPDATE tb_training SET C3DC1='$DC1', C3DC2='$DC2', C3DC3='$DC3', C_before='$C' WHERE pelanggan='$pelanggan'");
+              ?>
             </tbody>
           </table>
         </div>
@@ -155,12 +219,23 @@
                       pow(($res['Daya_WBP_6']-$C2_Daya_WBP_6), 2) + pow(($res['Daya_LWBP_6']-$C2_Daya_LWBP_6), 2) +
                       pow(($res['Daya_WBP_7']-$C2_Daya_WBP_7), 2) + pow(($res['Daya_LWBP_7']-$C2_Daya_LWBP_7), 2)
                     );
-              if($DC1 < $DC2) {
+              $DC3 = sqrt(
+                      pow(($res['Daya_WBP_1']-$C3_Daya_WBP_1), 2) + pow(($res['Daya_LWBP_1']-$C3_Daya_LWBP_1), 2) +
+                      pow(($res['Daya_WBP_2']-$C3_Daya_WBP_2), 2) + pow(($res['Daya_LWBP_2']-$C3_Daya_LWBP_2), 2) +
+                      pow(($res['Daya_WBP_3']-$C3_Daya_WBP_3), 2) + pow(($res['Daya_LWBP_3']-$C3_Daya_LWBP_3), 2) +
+                      pow(($res['Daya_WBP_4']-$C3_Daya_WBP_4), 2) + pow(($res['Daya_LWBP_4']-$C3_Daya_LWBP_4), 2) +
+                      pow(($res['Daya_WBP_5']-$C3_Daya_WBP_5), 2) + pow(($res['Daya_LWBP_5']-$C3_Daya_LWBP_5), 2) +
+                      pow(($res['Daya_WBP_6']-$C3_Daya_WBP_6), 2) + pow(($res['Daya_LWBP_6']-$C3_Daya_LWBP_6), 2) +
+                      pow(($res['Daya_WBP_7']-$C3_Daya_WBP_7), 2) + pow(($res['Daya_LWBP_7']-$C3_Daya_LWBP_7), 2)
+                    );
+              if(min($DC1, $DC2, $DC3) == $DC1) {
                 $C = 'C1';
-              } else {
+              } else if(min($DC1, $DC2, $DC3) == $DC2) {
                 $C = 'C2';
+              } else if(min($DC1, $DC2, $DC3) == $DC3) {
+                $C = 'C3';
               }
-              $query = $db->query("UPDATE tb_training SET C2DC1='$DC1', C2DC2='$DC2', C_before='$C' WHERE pelanggan='$pelanggan'");
+              $query = $db->query("UPDATE tb_training SET C3DC1='$DC1', C3DC2='$DC2', C3DC3='$DC3', C_before='$C' WHERE pelanggan='$pelanggan'");
             }
             $iterasi = 0;
             for ($i = 1; $i <= 103; $i++) {
@@ -225,39 +300,80 @@
               $C2_Daya_WBP_6_avg=$C2_Daya_WBP_6_sum/$C2_jml_data; $C2_Daya_LWBP_6_avg=$C2_Daya_LWBP_6_sum/$C2_jml_data;
               $C2_Daya_WBP_7_avg=$C2_Daya_WBP_7_sum/$C2_jml_data; $C2_Daya_LWBP_7_avg=$C2_Daya_LWBP_7_sum/$C2_jml_data;
 
+              // Cari rata-rata C3
+              $query = $db->query("SELECT * FROM tb_training WHERE C_before='C3'");
+              $C3_Daya_WBP_1_sum=0; $C3_Daya_LWBP_1_sum=0;
+              $C3_Daya_WBP_2_sum=0; $C3_Daya_LWBP_2_sum=0;
+              $C3_Daya_WBP_3_sum=0; $C3_Daya_LWBP_3_sum=0;
+              $C3_Daya_WBP_4_sum=0; $C3_Daya_LWBP_4_sum=0;
+              $C3_Daya_WBP_5_sum=0; $C3_Daya_LWBP_5_sum=0;
+              $C3_Daya_WBP_6_sum=0; $C3_Daya_LWBP_6_sum=0;
+              $C3_Daya_WBP_7_sum=0; $C3_Daya_LWBP_7_sum=0;
+              $C3_jml_data=0;
+
+              while($res = $query->fetch()){
+                $C3_jml_data++;
+                $C3_Daya_WBP_1_sum+=$res['Daya_WBP_1']; $C3_Daya_LWBP_1_sum+=$res['Daya_LWBP_1'];
+                $C3_Daya_WBP_2_sum+=$res['Daya_WBP_2']; $C3_Daya_LWBP_2_sum+=$res['Daya_LWBP_2'];
+                $C3_Daya_WBP_3_sum+=$res['Daya_WBP_3']; $C3_Daya_LWBP_3_sum+=$res['Daya_LWBP_3'];
+                $C3_Daya_WBP_4_sum+=$res['Daya_WBP_4']; $C3_Daya_LWBP_4_sum+=$res['Daya_LWBP_4'];
+                $C3_Daya_WBP_5_sum+=$res['Daya_WBP_5']; $C3_Daya_LWBP_5_sum+=$res['Daya_LWBP_5'];
+                $C3_Daya_WBP_6_sum+=$res['Daya_WBP_6']; $C3_Daya_LWBP_6_sum+=$res['Daya_LWBP_6'];
+                $C3_Daya_WBP_7_sum+=$res['Daya_WBP_7']; $C3_Daya_LWBP_7_sum+=$res['Daya_LWBP_7'];
+              }
+
+              $C3_Daya_WBP_1_avg=$C3_Daya_WBP_1_sum/$C3_jml_data; $C3_Daya_LWBP_1_avg=$C3_Daya_LWBP_1_sum/$C3_jml_data;
+              $C3_Daya_WBP_2_avg=$C3_Daya_WBP_2_sum/$C3_jml_data; $C3_Daya_LWBP_2_avg=$C3_Daya_LWBP_2_sum/$C3_jml_data;
+              $C3_Daya_WBP_3_avg=$C3_Daya_WBP_3_sum/$C3_jml_data; $C3_Daya_LWBP_3_avg=$C3_Daya_LWBP_3_sum/$C3_jml_data;
+              $C3_Daya_WBP_4_avg=$C3_Daya_WBP_4_sum/$C3_jml_data; $C3_Daya_LWBP_4_avg=$C3_Daya_LWBP_4_sum/$C3_jml_data;
+              $C3_Daya_WBP_5_avg=$C3_Daya_WBP_5_sum/$C3_jml_data; $C3_Daya_LWBP_5_avg=$C3_Daya_LWBP_5_sum/$C3_jml_data;
+              $C3_Daya_WBP_6_avg=$C3_Daya_WBP_6_sum/$C3_jml_data; $C3_Daya_LWBP_6_avg=$C3_Daya_LWBP_6_sum/$C3_jml_data;
+              $C3_Daya_WBP_7_avg=$C3_Daya_WBP_7_sum/$C3_jml_data; $C3_Daya_LWBP_7_avg=$C3_Daya_LWBP_7_sum/$C3_jml_data;
+
               $qry="SELECT * FROM tb_training";
               $result = $db->query($qry);
               while($res = $result->fetch()){
-              $pelanggan = $res['pelanggan'];
-              $DC1 = sqrt(
-                pow(($res['Daya_WBP_1']-$C1_Daya_WBP_1_avg), 2) + pow(($res['Daya_LWBP_1']-$C1_Daya_LWBP_1_avg), 2) +
-                pow(($res['Daya_WBP_2']-$C1_Daya_WBP_2_avg), 2) + pow(($res['Daya_LWBP_2']-$C1_Daya_LWBP_2_avg), 2) +
-                pow(($res['Daya_WBP_3']-$C1_Daya_WBP_3_avg), 2) + pow(($res['Daya_LWBP_3']-$C1_Daya_LWBP_3_avg), 2) +
-                pow(($res['Daya_WBP_4']-$C1_Daya_WBP_4_avg), 2) + pow(($res['Daya_LWBP_4']-$C1_Daya_LWBP_4_avg), 2) +
-                pow(($res['Daya_WBP_5']-$C1_Daya_WBP_5_avg), 2) + pow(($res['Daya_LWBP_5']-$C1_Daya_LWBP_5_avg), 2) +
-                pow(($res['Daya_WBP_6']-$C1_Daya_WBP_6_avg), 2) + pow(($res['Daya_LWBP_6']-$C1_Daya_LWBP_6_avg), 2) +
-                pow(($res['Daya_WBP_7']-$C1_Daya_WBP_7_avg), 2) + pow(($res['Daya_LWBP_7']-$C1_Daya_LWBP_7_avg), 2)
-              );
-              $DC2= sqrt(
-                pow(($res['Daya_WBP_1']-$C2_Daya_WBP_1_avg), 2) + pow(($res['Daya_LWBP_1']-$C2_Daya_LWBP_1_avg), 2) +
-                pow(($res['Daya_WBP_2']-$C2_Daya_WBP_2_avg), 2) + pow(($res['Daya_LWBP_2']-$C2_Daya_LWBP_2_avg), 2) +
-                pow(($res['Daya_WBP_3']-$C2_Daya_WBP_3_avg), 2) + pow(($res['Daya_LWBP_3']-$C2_Daya_LWBP_3_avg), 2) +
-                pow(($res['Daya_WBP_4']-$C2_Daya_WBP_4_avg), 2) + pow(($res['Daya_LWBP_4']-$C2_Daya_LWBP_4_avg), 2) +
-                pow(($res['Daya_WBP_5']-$C2_Daya_WBP_5_avg), 2) + pow(($res['Daya_LWBP_5']-$C2_Daya_LWBP_5_avg), 2) +
-                pow(($res['Daya_WBP_6']-$C2_Daya_WBP_6_avg), 2) + pow(($res['Daya_LWBP_6']-$C2_Daya_LWBP_6_avg), 2) +
-                pow(($res['Daya_WBP_7']-$C2_Daya_WBP_7_avg), 2) + pow(($res['Daya_LWBP_7']-$C2_Daya_LWBP_7_avg), 2)
-              );
-              if($DC1<$DC2) {
-                $C='C1';
-                } else {
-                  $C='C2';
+                $pelanggan = $res['pelanggan'];
+                $DC1 = sqrt(
+                  pow(($res['Daya_WBP_1']-$C1_Daya_WBP_1_avg), 2) + pow(($res['Daya_LWBP_1']-$C1_Daya_LWBP_1_avg), 2) +
+                  pow(($res['Daya_WBP_2']-$C1_Daya_WBP_2_avg), 2) + pow(($res['Daya_LWBP_2']-$C1_Daya_LWBP_2_avg), 2) +
+                  pow(($res['Daya_WBP_3']-$C1_Daya_WBP_3_avg), 2) + pow(($res['Daya_LWBP_3']-$C1_Daya_LWBP_3_avg), 2) +
+                  pow(($res['Daya_WBP_4']-$C1_Daya_WBP_4_avg), 2) + pow(($res['Daya_LWBP_4']-$C1_Daya_LWBP_4_avg), 2) +
+                  pow(($res['Daya_WBP_5']-$C1_Daya_WBP_5_avg), 2) + pow(($res['Daya_LWBP_5']-$C1_Daya_LWBP_5_avg), 2) +
+                  pow(($res['Daya_WBP_6']-$C1_Daya_WBP_6_avg), 2) + pow(($res['Daya_LWBP_6']-$C1_Daya_LWBP_6_avg), 2) +
+                  pow(($res['Daya_WBP_7']-$C1_Daya_WBP_7_avg), 2) + pow(($res['Daya_LWBP_7']-$C1_Daya_LWBP_7_avg), 2)
+                );
+                $DC2 = sqrt(
+                  pow(($res['Daya_WBP_1']-$C2_Daya_WBP_1_avg), 2) + pow(($res['Daya_LWBP_1']-$C2_Daya_LWBP_1_avg), 2) +
+                  pow(($res['Daya_WBP_2']-$C2_Daya_WBP_2_avg), 2) + pow(($res['Daya_LWBP_2']-$C2_Daya_LWBP_2_avg), 2) +
+                  pow(($res['Daya_WBP_3']-$C2_Daya_WBP_3_avg), 2) + pow(($res['Daya_LWBP_3']-$C2_Daya_LWBP_3_avg), 2) +
+                  pow(($res['Daya_WBP_4']-$C2_Daya_WBP_4_avg), 2) + pow(($res['Daya_LWBP_4']-$C2_Daya_LWBP_4_avg), 2) +
+                  pow(($res['Daya_WBP_5']-$C2_Daya_WBP_5_avg), 2) + pow(($res['Daya_LWBP_5']-$C2_Daya_LWBP_5_avg), 2) +
+                  pow(($res['Daya_WBP_6']-$C2_Daya_WBP_6_avg), 2) + pow(($res['Daya_LWBP_6']-$C2_Daya_LWBP_6_avg), 2) +
+                  pow(($res['Daya_WBP_7']-$C2_Daya_WBP_7_avg), 2) + pow(($res['Daya_LWBP_7']-$C2_Daya_LWBP_7_avg), 2)
+                );
+                $DC3 = sqrt(
+                  pow(($res['Daya_WBP_1']-$C3_Daya_WBP_1_avg), 2) + pow(($res['Daya_LWBP_1']-$C3_Daya_LWBP_1_avg), 2) +
+                  pow(($res['Daya_WBP_2']-$C3_Daya_WBP_2_avg), 2) + pow(($res['Daya_LWBP_2']-$C3_Daya_LWBP_2_avg), 2) +
+                  pow(($res['Daya_WBP_3']-$C3_Daya_WBP_3_avg), 2) + pow(($res['Daya_LWBP_3']-$C3_Daya_LWBP_3_avg), 2) +
+                  pow(($res['Daya_WBP_4']-$C3_Daya_WBP_4_avg), 2) + pow(($res['Daya_LWBP_4']-$C3_Daya_LWBP_4_avg), 2) +
+                  pow(($res['Daya_WBP_5']-$C3_Daya_WBP_5_avg), 2) + pow(($res['Daya_LWBP_5']-$C3_Daya_LWBP_5_avg), 2) +
+                  pow(($res['Daya_WBP_6']-$C3_Daya_WBP_6_avg), 2) + pow(($res['Daya_LWBP_6']-$C3_Daya_LWBP_6_avg), 2) +
+                  pow(($res['Daya_WBP_7']-$C3_Daya_WBP_7_avg), 2) + pow(($res['Daya_LWBP_7']-$C3_Daya_LWBP_7_avg), 2)
+                );
+                if(min($DC1, $DC2, $DC3) == $DC1) {
+                  $C = 'C1';
+                } else if(min($DC1, $DC2, $DC3) == $DC2) {
+                  $C = 'C2';
+                } else if(min($DC1, $DC2, $DC3) == $DC3) {
+                  $C = 'C3';
+                }
+                $query = $db->query("UPDATE tb_training SET C3DC1='$DC1', C3DC2='$DC2', C3DC3='$DC3', C_after='$C' WHERE pelanggan='$pelanggan'");
               }
-              $query = $db->query("UPDATE tb_training SET C2DC1='$DC1', C2DC2='$DC2', C_after='$C' WHERE pelanggan='$pelanggan'");
-            }
-            $query = $db->query("UPDATE tb_training SET hasil='1' WHERE C_before=C_after");
-            $query = $db->query("UPDATE tb_training SET C_before=C_after");
+              $query = $db->query("UPDATE tb_training SET hasil='1' WHERE C_before=C_after");
+              $query = $db->query("UPDATE tb_training SET C_before=C_after");
           ?>
-          <h5>Iterasi ke-<?php echo $iterasi ?> <br> <small>Jumlah data C1: <?php echo $C1_jml_data ?></small> | <small>Jumlah data C2: <?php echo $C2_jml_data ?></small></h5>
+          <h5>Iterasi ke-<?php echo $iterasi ?> <br> <small>Jumlah data C1: <?php echo $C1_jml_data ?></small> | <small>Jumlah data C2: <?php echo $C2_jml_data ?></small> | <small>Jumlah data C3: <?php echo $C3_jml_data ?></small></h5>
           <table class="ui celled center aligned collapsing small table">
             <thead>
               <tr>
@@ -311,6 +427,23 @@
                 <td><?php echo number_format($C2_Daya_WBP_7_avg,3, '.',',') ?></td>
                 <td><?php echo number_format($C2_Daya_LWBP_7_avg,3, '.',',') ?></td>
               </tr>
+              <tr>
+                <td>Cluster 3</td>
+                <td><?php echo number_format($C3_Daya_WBP_1_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_1_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_WBP_2_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_2_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_WBP_3_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_3_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_WBP_4_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_4_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_WBP_5_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_5_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_WBP_6_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_6_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_WBP_7_avg,3, '.',',') ?></td>
+                <td><?php echo number_format($C3_Daya_LWBP_7_avg,3, '.',',') ?></td>
+              </tr>
             </tbody>
           </table>
           <?php
@@ -334,7 +467,6 @@
               $query = $db->query("SELECT * FROM tb_training WHERE C_after = 'C1'");
               $S1 = 0;
               $jml_C1 = 0;
-
               while ($res = $query->fetch()) {
                 $jml_C1++;
                 $S1 +=
@@ -351,7 +483,6 @@
               $query = $db->query("SELECT * FROM tb_training WHERE C_after = 'C2'");
               $S2 = 0;
               $jml_C2 = 0;
-
               while ($res = $query->fetch()) {
                 $jml_C2++;
                 $S2 +=
@@ -365,6 +496,22 @@
               }
               $S2 = sqrt($S2 / $jml_C2);
 
+              $query = $db->query("SELECT * FROM tb_training WHERE C_after = 'C3'");
+              $S3 = 0;
+              $jml_C3 = 0;
+              while($res = $query->fetch()){
+                $jml_C3++;
+                $S3 +=
+                  pow(($res['Daya_WBP_1']-$C3_Daya_WBP_1_avg), 2) + pow(($res['Daya_LWBP_1']-$C3_Daya_LWBP_1_avg), 2) +
+                  pow(($res['Daya_WBP_2']-$C3_Daya_WBP_2_avg), 2) + pow(($res['Daya_LWBP_2']-$C3_Daya_LWBP_2_avg), 2) +
+                  pow(($res['Daya_WBP_3']-$C3_Daya_WBP_3_avg), 2) + pow(($res['Daya_LWBP_3']-$C3_Daya_LWBP_3_avg), 2) +
+                  pow(($res['Daya_WBP_4']-$C3_Daya_WBP_4_avg), 2) + pow(($res['Daya_LWBP_4']-$C3_Daya_LWBP_4_avg), 2) +
+                  pow(($res['Daya_WBP_5']-$C3_Daya_WBP_5_avg), 2) + pow(($res['Daya_LWBP_5']-$C3_Daya_LWBP_5_avg), 2) +
+                  pow(($res['Daya_WBP_6']-$C3_Daya_WBP_6_avg), 2) + pow(($res['Daya_LWBP_6']-$C3_Daya_LWBP_6_avg), 2) +
+                  pow(($res['Daya_WBP_7']-$C3_Daya_WBP_7_avg), 2) + pow(($res['Daya_LWBP_7']-$C3_Daya_LWBP_7_avg), 2);
+              }
+              $S3 = sqrt($S3/$jml_C3);
+
               $M12 =
                 sqrt(
                   pow(($C1_Daya_WBP_1_avg-$C2_Daya_WBP_1_avg), 2) + pow(($C1_Daya_LWBP_1_avg-$C2_Daya_LWBP_1_avg), 2) +
@@ -374,6 +521,16 @@
                   pow(($C1_Daya_WBP_5_avg-$C2_Daya_WBP_5_avg), 2) + pow(($C1_Daya_LWBP_5_avg-$C2_Daya_LWBP_5_avg), 2) +
                   pow(($C1_Daya_WBP_6_avg-$C2_Daya_WBP_6_avg), 2) + pow(($C1_Daya_LWBP_6_avg-$C2_Daya_LWBP_6_avg), 2) +
                   pow(($C1_Daya_WBP_7_avg-$C2_Daya_WBP_7_avg), 2) + pow(($C1_Daya_LWBP_7_avg-$C2_Daya_LWBP_7_avg), 2)
+                );
+              $M13 =
+                sqrt(
+                  pow(($C1_Daya_WBP_1_avg-$C3_Daya_WBP_1_avg), 2) + pow(($C1_Daya_LWBP_1_avg-$C3_Daya_LWBP_1_avg), 2) +
+                  pow(($C1_Daya_WBP_2_avg-$C3_Daya_WBP_2_avg), 2) + pow(($C1_Daya_LWBP_2_avg-$C3_Daya_LWBP_2_avg), 2) +
+                  pow(($C1_Daya_WBP_3_avg-$C3_Daya_WBP_3_avg), 2) + pow(($C1_Daya_LWBP_3_avg-$C3_Daya_LWBP_3_avg), 2) +
+                  pow(($C1_Daya_WBP_4_avg-$C3_Daya_WBP_4_avg), 2) + pow(($C1_Daya_LWBP_4_avg-$C3_Daya_LWBP_4_avg), 2) +
+                  pow(($C1_Daya_WBP_5_avg-$C3_Daya_WBP_5_avg), 2) + pow(($C1_Daya_LWBP_5_avg-$C3_Daya_LWBP_5_avg), 2) +
+                  pow(($C1_Daya_WBP_6_avg-$C3_Daya_WBP_6_avg), 2) + pow(($C1_Daya_LWBP_6_avg-$C3_Daya_LWBP_6_avg), 2) +
+                  pow(($C1_Daya_WBP_7_avg-$C3_Daya_WBP_7_avg), 2) + pow(($C1_Daya_LWBP_7_avg-$C3_Daya_LWBP_7_avg), 2)
                 );
               $M21 =
                 sqrt(
@@ -385,38 +542,83 @@
                   pow(($C2_Daya_WBP_6_avg-$C1_Daya_WBP_6_avg), 2) + pow(($C2_Daya_LWBP_6_avg-$C1_Daya_LWBP_6_avg), 2) +
                   pow(($C2_Daya_WBP_7_avg-$C1_Daya_WBP_7_avg), 2) + pow(($C2_Daya_LWBP_7_avg-$C1_Daya_LWBP_7_avg), 2)
                 );
+              $M23 =
+                sqrt(
+                  pow(($C2_Daya_WBP_1_avg-$C3_Daya_WBP_1_avg), 2) + pow(($C2_Daya_LWBP_1_avg-$C3_Daya_LWBP_1_avg), 2) +
+                  pow(($C2_Daya_WBP_2_avg-$C3_Daya_WBP_2_avg), 2) + pow(($C2_Daya_LWBP_2_avg-$C3_Daya_LWBP_2_avg), 2) +
+                  pow(($C2_Daya_WBP_3_avg-$C3_Daya_WBP_3_avg), 2) + pow(($C2_Daya_LWBP_3_avg-$C3_Daya_LWBP_3_avg), 2) +
+                  pow(($C2_Daya_WBP_4_avg-$C3_Daya_WBP_4_avg), 2) + pow(($C2_Daya_LWBP_4_avg-$C3_Daya_LWBP_4_avg), 2) +
+                  pow(($C2_Daya_WBP_5_avg-$C3_Daya_WBP_5_avg), 2) + pow(($C2_Daya_LWBP_5_avg-$C3_Daya_LWBP_5_avg), 2) +
+                  pow(($C2_Daya_WBP_6_avg-$C3_Daya_WBP_6_avg), 2) + pow(($C2_Daya_LWBP_6_avg-$C3_Daya_LWBP_6_avg), 2) +
+                  pow(($C2_Daya_WBP_7_avg-$C3_Daya_WBP_7_avg), 2) + pow(($C2_Daya_LWBP_7_avg-$C3_Daya_LWBP_7_avg), 2)
+                );
+              $M31 =
+                sqrt(
+                  pow(($C3_Daya_WBP_1_avg-$C1_Daya_WBP_1_avg), 2) + pow(($C3_Daya_LWBP_1_avg-$C1_Daya_LWBP_1_avg), 2) +
+                  pow(($C3_Daya_WBP_2_avg-$C1_Daya_WBP_2_avg), 2) + pow(($C3_Daya_LWBP_2_avg-$C1_Daya_LWBP_2_avg), 2) +
+                  pow(($C3_Daya_WBP_3_avg-$C1_Daya_WBP_3_avg), 2) + pow(($C3_Daya_LWBP_3_avg-$C1_Daya_LWBP_3_avg), 2) +
+                  pow(($C3_Daya_WBP_4_avg-$C1_Daya_WBP_4_avg), 2) + pow(($C3_Daya_LWBP_4_avg-$C1_Daya_LWBP_4_avg), 2) +
+                  pow(($C3_Daya_WBP_5_avg-$C1_Daya_WBP_5_avg), 2) + pow(($C3_Daya_LWBP_5_avg-$C1_Daya_LWBP_5_avg), 2) +
+                  pow(($C3_Daya_WBP_6_avg-$C1_Daya_WBP_6_avg), 2) + pow(($C3_Daya_LWBP_6_avg-$C1_Daya_LWBP_6_avg), 2) +
+                  pow(($C3_Daya_WBP_7_avg-$C1_Daya_WBP_7_avg), 2) + pow(($C3_Daya_LWBP_7_avg-$C1_Daya_LWBP_7_avg), 2)
+                );
+              $M32 =
+                sqrt(
+                  pow(($C3_Daya_WBP_1_avg-$C2_Daya_WBP_1_avg), 2) + pow(($C3_Daya_LWBP_1_avg-$C2_Daya_LWBP_1_avg), 2) +
+                  pow(($C3_Daya_WBP_2_avg-$C2_Daya_WBP_2_avg), 2) + pow(($C3_Daya_LWBP_2_avg-$C2_Daya_LWBP_2_avg), 2) +
+                  pow(($C3_Daya_WBP_3_avg-$C2_Daya_WBP_3_avg), 2) + pow(($C3_Daya_LWBP_3_avg-$C2_Daya_LWBP_3_avg), 2) +
+                  pow(($C3_Daya_WBP_4_avg-$C2_Daya_WBP_4_avg), 2) + pow(($C3_Daya_LWBP_4_avg-$C2_Daya_LWBP_4_avg), 2) +
+                  pow(($C3_Daya_WBP_5_avg-$C2_Daya_WBP_5_avg), 2) + pow(($C3_Daya_LWBP_5_avg-$C2_Daya_LWBP_5_avg), 2) +
+                  pow(($C3_Daya_WBP_6_avg-$C2_Daya_WBP_6_avg), 2) + pow(($C3_Daya_LWBP_6_avg-$C2_Daya_LWBP_6_avg), 2) +
+                  pow(($C3_Daya_WBP_7_avg-$C2_Daya_WBP_7_avg), 2) + pow(($C3_Daya_LWBP_7_avg-$C2_Daya_LWBP_7_avg), 2)
+                );
 
-              $R12 = ($S1 + $S2) / $M12; $R21 = ($S2 + $S1) / $M21;
+              $R12 = ($S1 + $S2) / $M12; $R13 = ($S1 + $S3) / $M13;
+              $R21 = ($S2 + $S1) / $M21; $R23 = ($S2 + $S3) / $M23;
+              $R31 = ($S3 + $S1) / $M31; $R32 = ($S3 + $S2) / $M32;
 
-              $D1 = max($R12,0);
-              $D2 = max($R21,0);
+              $D1 = max($R12,$R13);
+              $D2 = max($R21,$R23);
+              $D3 = max($R31,$R32);
 
-              $DB = ($D1 + $D2) / 2;
+              $DB = ($D1 + $D2 + $D3) / 3;
 
-              $_SESSION['DB_training2'] = $DB;
+              $_SESSION['DB_training3'] = $DB;
               $query = "UPDATE tb_centroid SET
-                      Daya_WBP_1=$C1_Daya_WBP_1_avg, Daya_LWBP_1=$C1_Daya_LWBP_1_avg,
-                      Daya_WBP_2=$C1_Daya_WBP_2_avg, Daya_LWBP_2=$C1_Daya_LWBP_2_avg,
-                      Daya_WBP_3=$C1_Daya_WBP_3_avg, Daya_LWBP_3=$C1_Daya_LWBP_3_avg,
-                      Daya_WBP_4=$C1_Daya_WBP_4_avg, Daya_LWBP_4=$C1_Daya_LWBP_4_avg,
-                      Daya_WBP_5=$C1_Daya_WBP_5_avg, Daya_LWBP_5=$C1_Daya_LWBP_5_avg,
-                      Daya_WBP_6=$C1_Daya_WBP_6_avg, Daya_LWBP_6=$C1_Daya_LWBP_6_avg,
-                      Daya_WBP_7=$C1_Daya_WBP_7_avg, Daya_LWBP_7=$C1_Daya_LWBP_7_avg, username='' WHERE cluster='2' AND C='C1'";
+                Daya_WBP_1=$C1_Daya_WBP_1_avg, Daya_LWBP_1=$C1_Daya_LWBP_1_avg,
+                Daya_WBP_2=$C1_Daya_WBP_2_avg, Daya_LWBP_2=$C1_Daya_LWBP_2_avg,
+                Daya_WBP_3=$C1_Daya_WBP_3_avg, Daya_LWBP_3=$C1_Daya_LWBP_3_avg,
+                Daya_WBP_4=$C1_Daya_WBP_4_avg, Daya_LWBP_4=$C1_Daya_LWBP_4_avg,
+                Daya_WBP_5=$C1_Daya_WBP_5_avg, Daya_LWBP_5=$C1_Daya_LWBP_5_avg,
+                Daya_WBP_6=$C1_Daya_WBP_6_avg, Daya_LWBP_6=$C1_Daya_LWBP_6_avg,
+                Daya_WBP_7=$C1_Daya_WBP_7_avg, Daya_LWBP_7=$C1_Daya_LWBP_7_avg,
+                username='' WHERE cluster='3' AND C='C1'";
               $db->query($query);
               $query = "UPDATE tb_centroid SET
-                      Daya_WBP_1=$C2_Daya_WBP_1_avg, Daya_LWBP_1=$C2_Daya_LWBP_1_avg,
-                      Daya_WBP_2=$C2_Daya_WBP_2_avg, Daya_LWBP_2=$C2_Daya_LWBP_2_avg,
-                      Daya_WBP_3=$C2_Daya_WBP_3_avg, Daya_LWBP_3=$C2_Daya_LWBP_3_avg,
-                      Daya_WBP_4=$C2_Daya_WBP_4_avg, Daya_LWBP_4=$C2_Daya_LWBP_4_avg,
-                      Daya_WBP_5=$C2_Daya_WBP_5_avg, Daya_LWBP_5=$C2_Daya_LWBP_5_avg,
-                      Daya_WBP_6=$C2_Daya_WBP_6_avg, Daya_LWBP_6=$C2_Daya_LWBP_6_avg,
-                      Daya_WBP_7=$C2_Daya_WBP_7_avg, Daya_LWBP_7=$C2_Daya_LWBP_7_avg, username=''  WHERE cluster='2' AND C='C2'";
+                Daya_WBP_1=$C2_Daya_WBP_1_avg, Daya_LWBP_1=$C2_Daya_LWBP_1_avg,
+                Daya_WBP_2=$C2_Daya_WBP_2_avg, Daya_LWBP_2=$C2_Daya_LWBP_2_avg,
+                Daya_WBP_3=$C2_Daya_WBP_3_avg, Daya_LWBP_3=$C2_Daya_LWBP_3_avg,
+                Daya_WBP_4=$C2_Daya_WBP_4_avg, Daya_LWBP_4=$C2_Daya_LWBP_4_avg,
+                Daya_WBP_5=$C2_Daya_WBP_5_avg, Daya_LWBP_5=$C2_Daya_LWBP_5_avg,
+                Daya_WBP_6=$C2_Daya_WBP_6_avg, Daya_LWBP_6=$C2_Daya_LWBP_6_avg,
+                Daya_WBP_7=$C2_Daya_WBP_7_avg, Daya_LWBP_7=$C2_Daya_LWBP_7_avg,
+                username='' WHERE cluster='3' AND C='C2'";
+              $db->query($query);
+              $query = "UPDATE tb_centroid SET
+                Daya_WBP_1=$C3_Daya_WBP_1_avg, Daya_LWBP_1=$C3_Daya_LWBP_1_avg,
+                Daya_WBP_2=$C3_Daya_WBP_2_avg, Daya_LWBP_2=$C3_Daya_LWBP_2_avg,
+                Daya_WBP_3=$C3_Daya_WBP_3_avg, Daya_LWBP_3=$C3_Daya_LWBP_3_avg,
+                Daya_WBP_4=$C3_Daya_WBP_4_avg, Daya_LWBP_4=$C3_Daya_LWBP_4_avg,
+                Daya_WBP_5=$C3_Daya_WBP_5_avg, Daya_LWBP_5=$C3_Daya_LWBP_5_avg,
+                Daya_WBP_6=$C3_Daya_WBP_6_avg, Daya_LWBP_6=$C3_Daya_LWBP_6_avg,
+                Daya_WBP_7=$C3_Daya_WBP_7_avg, Daya_LWBP_7=$C3_Daya_LWBP_7_avg,
+                username='$username' WHERE cluster='3' AND C='C3'";
               $db->query($query);
             ?>
             <thead>
               <tr>
                 <?php
-                  $title = array('S1','S2','M12','M21','R12', 'R21', 'D1','D2','DB');
+                  $title = array('S1','S2','S3');
 
                   for ($x=0; $x < count($title); $x++) {
                 ?>
@@ -430,12 +632,79 @@
               <tr>
                 <td><?php echo number_format($S1, 3) ?></td>
                 <td><?php echo number_format($S2, 3) ?></td>
+                <td><?php echo number_format($S3, 3) ?></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="ui celled center aligned collapsing small table">
+            <thead>
+              <tr>
+                <?php
+                  $title = array('M12','M13','M21','M23','M31','M32');
+
+                  for ($x=0; $x < count($title); $x++) {
+                ?>
+                <th><?php echo $title[$x]; ?></th>
+                <?php
+                  }
+                ?>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td><?php echo number_format($M12, 3) ?></td>
+                <td><?php echo number_format($M13, 3) ?></td>
                 <td><?php echo number_format($M21, 3) ?></td>
+                <td><?php echo number_format($M23, 3) ?></td>
+                <td><?php echo number_format($M31, 3) ?></td>
+                <td><?php echo number_format($M32, 3) ?></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="ui celled center aligned collapsing small table">
+            <thead>
+              <tr>
+                <?php
+                  $title = array('R12','R13','R21','R23','R31','R32');
+
+                  for ($x=0; $x < count($title); $x++) {
+                ?>
+                <th><?php echo $title[$x]; ?></th>
+                <?php
+                  }
+                ?>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td><?php echo number_format($R12, 3) ?></td>
+                <td><?php echo number_format($R13, 3) ?></td>
                 <td><?php echo number_format($R21, 3) ?></td>
+                <td><?php echo number_format($R23, 3) ?></td>
+                <td><?php echo number_format($R31, 3) ?></td>
+                <td><?php echo number_format($R32, 3) ?></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="ui celled center aligned collapsing small table">
+            <thead>
+              <tr>
+                <?php
+                  $title = array('D1','D2','D3','DB');
+
+                  for ($x=0; $x < count($title); $x++) {
+                ?>
+                <th><?php echo $title[$x]; ?></th>
+                <?php
+                  }
+                ?>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
                 <td><?php echo number_format($D1, 3) ?></td>
                 <td><?php echo number_format($D2, 3) ?></td>
+                <td><?php echo number_format($D3, 3) ?></td>
                 <td><?php echo number_format($DB, 3) ?></td>
               </tr>
             </tbody>
@@ -443,17 +712,23 @@
           <?php
             $sumbu_x="'WBP Minggu', 'LWBP Minggu', 'WBP Senin', 'LWBP Senin', 'WBP Selasa', 'LWBP Selasa', 'WBP Rabu', 'LWBP Rabu', 'WBP Kamis', 'LWBP Kamis', 'WBP Jumat', 'LWBP Jumat', 'WBP Sabtu', 'LWBP Sabtu'";
 
-            $qry="SELECT * FROM tb_centroid WHERE cluster='2' AND C='C1'";
+            $qry="SELECT * FROM tb_centroid WHERE cluster='3' AND C='C1'";
             $result=$db->query($qry);
             while($res=$result->fetch()){
               $sumbu_y = $res['Daya_WBP_1'].",".$res['Daya_LWBP_1'].",".$res['Daya_WBP_2'].",".$res['Daya_LWBP_2'].",".$res['Daya_WBP_3'].",".$res['Daya_LWBP_3'].",".$res['Daya_WBP_4'].",".$res['Daya_LWBP_4'].",".$res['Daya_WBP_5'].",".$res['Daya_LWBP_5'].",".$res['Daya_WBP_6'].",".$res['Daya_LWBP_6'].",".$res['Daya_WBP_7'].",".$res['Daya_LWBP_7'];
             }
 
-            $qry="SELECT * FROM tb_centroid WHERE cluster='2' AND C='C2'";
+            $qry="SELECT * FROM tb_centroid WHERE cluster='3' AND C='C2'";
             $result=$db->query($qry);
             while($res=$result->fetch()){
               $sumbu_y1 = $res['Daya_WBP_1'].",".$res['Daya_LWBP_1'].",".$res['Daya_WBP_2'].",".$res['Daya_LWBP_2'].",".$res['Daya_WBP_3'].",".$res['Daya_LWBP_3'].",".$res['Daya_WBP_4'].",".$res['Daya_LWBP_4'].",".$res['Daya_WBP_5'].",".$res['Daya_LWBP_5'].",".$res['Daya_WBP_6'].",".$res['Daya_LWBP_6'].",".$res['Daya_WBP_7'].",".$res['Daya_LWBP_7'];
             }
+
+            $qry="SELECT * FROM tb_centroid WHERE cluster='3' AND C='C3'";
+          	$result=$db->query($qry);
+          	while($res=$result->fetch()){
+          		$sumbu_y2 = $res['Daya_WBP_1'].",".$res['Daya_LWBP_1'].",".$res['Daya_WBP_2'].",".$res['Daya_LWBP_2'].",".$res['Daya_WBP_3'].",".$res['Daya_LWBP_3'].",".$res['Daya_WBP_4'].",".$res['Daya_LWBP_4'].",".$res['Daya_WBP_5'].",".$res['Daya_LWBP_5'].",".$res['Daya_WBP_6'].",".$res['Daya_LWBP_6'].",".$res['Daya_WBP_7'].",".$res['Daya_LWBP_7'];
+          	}
           ?>
 
         <script language="javascript" type="text/javascript">
@@ -471,12 +746,18 @@
              //isi datanya
                    series: [{name: 'C1', data: [<?php echo $sumbu_y; ?>]},
                  {name: 'C2', data: [<?php echo $sumbu_y1; ?>]},
+               {name: 'C3', data: [<?php echo $sumbu_y2; ?>]},
            ]});
            });
 
      </script>
         <div id="container"></div>
         </div>
+        <a href="cluster2.php" class="ui primary button">Training set Cluster 2</a>
+        <a href="cluster3.php" class="ui disabled button">Training set Cluster 3</a>
+        <a href="cluster4.php" class="ui primary button">Training set Cluster 4</a>
+        <a href="cluster5.php" class="ui primary button">Training set Cluster 5</a>
+        <a href="cluster6.php" class="ui primary button">Training set Cluster 6</a>
       </div>
     </div>
   </body>

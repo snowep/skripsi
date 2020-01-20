@@ -80,7 +80,7 @@
                 ?>
               </tr>
               <tr>
-                <td>CLuster 2</td>
+                <td>Cluster 2</td>
                 <?php
                   $acak_C2 = 2;
                   $query = $db->query("SELECT Daya_WBP_1, Daya_LWBP_1, Daya_WBP_2, Daya_LWBP_2, Daya_WBP_3, Daya_LWBP_3, Daya_WBP_4, Daya_LWBP_4, Daya_WBP_5, Daya_LWBP_5, Daya_WBP_6, Daya_LWBP_6, Daya_WBP_7, Daya_LWBP_7 FROM tb_training WHERE pelanggan = '$acak_C2'");
@@ -478,7 +478,11 @@
         <div id="container"></div>
         </div>
 
+        <a href="cluster2.php" class="ui disabled button">Training set Cluster 2</a>
         <a href="cluster3.php" class="ui primary button">Training set Cluster 3</a>
+        <a href="cluster4.php" class="ui primary button">Training set Cluster 4</a>
+        <a href="cluster5.php" class="ui primary button">Training set Cluster 5</a>
+        <a href="cluster6.php" class="ui primary button">Training set Cluster 6</a>
       </div>
     </div>
   </body>
