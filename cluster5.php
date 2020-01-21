@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include 'database.php'; ?>
+<?php include 'database.php'; session_start(); ?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
@@ -980,7 +980,7 @@
               <tr>
                 <td><?php echo number_format($M12, 3) ?></td>
                 <td><?php echo number_format($M13, 3) ?></td>
-                <td><?php echo number_format($M14, 3) ?></td>>
+                <td><?php echo number_format($M14, 3) ?></td>
                 <td><?php echo number_format($M15, 3) ?></td>
               </tr>
             </tbody>

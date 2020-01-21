@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<?php include 'database.php'; ?>
+<?php include 'database.php'; session_start(); ?>
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
