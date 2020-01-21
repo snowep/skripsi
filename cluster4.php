@@ -807,13 +807,13 @@
                 username='' WHERE cluster='4' AND C='C3'";
               $db->query($query);
               $query = "UPDATE tb_centroid SET
-                Daya_WBP_1=$C3_Daya_WBP_1_avg, Daya_LWBP_1=$C3_Daya_LWBP_1_avg,
-                Daya_WBP_2=$C3_Daya_WBP_2_avg, Daya_LWBP_2=$C3_Daya_LWBP_2_avg,
-                Daya_WBP_3=$C3_Daya_WBP_3_avg, Daya_LWBP_3=$C3_Daya_LWBP_3_avg,
-                Daya_WBP_4=$C3_Daya_WBP_4_avg, Daya_LWBP_4=$C3_Daya_LWBP_4_avg,
-                Daya_WBP_5=$C3_Daya_WBP_5_avg, Daya_LWBP_5=$C3_Daya_LWBP_5_avg,
-                Daya_WBP_6=$C3_Daya_WBP_6_avg, Daya_LWBP_6=$C3_Daya_LWBP_6_avg,
-                Daya_WBP_7=$C3_Daya_WBP_7_avg, Daya_LWBP_7=$C3_Daya_LWBP_7_avg,
+                Daya_WBP_1=$C4_Daya_WBP_1_avg, Daya_LWBP_1=$C4_Daya_LWBP_1_avg,
+                Daya_WBP_2=$C4_Daya_WBP_2_avg, Daya_LWBP_2=$C4_Daya_LWBP_2_avg,
+                Daya_WBP_3=$C4_Daya_WBP_3_avg, Daya_LWBP_3=$C4_Daya_LWBP_3_avg,
+                Daya_WBP_4=$C4_Daya_WBP_4_avg, Daya_LWBP_4=$C4_Daya_LWBP_4_avg,
+                Daya_WBP_5=$C4_Daya_WBP_5_avg, Daya_LWBP_5=$C4_Daya_LWBP_5_avg,
+                Daya_WBP_6=$C4_Daya_WBP_6_avg, Daya_LWBP_6=$C4_Daya_LWBP_6_avg,
+                Daya_WBP_7=$C4_Daya_WBP_7_avg, Daya_LWBP_7=$C4_Daya_LWBP_7_avg,
                 username='' WHERE cluster='4' AND C='C4'";
               $db->query($query);
             ?>
@@ -909,6 +909,28 @@
             <thead>
               <tr>
                 <?php
+                  $title = array('M41','M42','M43');
+
+                  for ($x=0; $x < count($title); $x++) {
+                ?>
+                <th><?php echo $title[$x]; ?></th>
+                <?php
+                  }
+                ?>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><?php echo number_format($M41, 3) ?></td>
+                <td><?php echo number_format($M42, 3) ?></td>
+                <td><?php echo number_format($M43, 3) ?></td>
+              </tr>
+            </tbody>
+          </table>
+          <table class="ui celled center aligned collapsing small table">
+            <thead>
+              <tr>
+                <?php
                   $title = array('R12','R13','R14');
 
                   for ($x=0; $x < count($title); $x++) {
@@ -968,6 +990,29 @@
                 <td><?php echo number_format($R31, 3) ?></td>
                 <td><?php echo number_format($R32, 3) ?></td>
                 <td><?php echo number_format($R34, 3) ?></td>
+              </tr>
+            </tbody>
+          </table>
+
+          <table class="ui celled center aligned collapsing small table">
+            <thead>
+              <tr>
+                <?php
+                  $title = array('R41','R42','R43');
+
+                  for ($x=0; $x < count($title); $x++) {
+                ?>
+                <th><?php echo $title[$x]; ?></th>
+                <?php
+                  }
+                ?>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><?php echo number_format($R41, 3) ?></td>
+                <td><?php echo number_format($R42, 3) ?></td>
+                <td><?php echo number_format($R43, 3) ?></td>
               </tr>
             </tbody>
           </table>
