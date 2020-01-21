@@ -25,7 +25,7 @@
       $_SESSION['grafik']='cluster2';
       echo "Set Cluster 2 <br /><hr/>";
       echo "<br />";
-      echo '<a href="testing2.php"><i class="fa fa fa-cogs"></i> Data Testing Set Cluster 2</a>';
+      echo '<a href="testingData.php"><i class="fa fa fa-cogs"></i> Lihat Data Testing</a>';
       echo "<br />";
       ////////////////////////////////////////// Grafik 2
       $sumbu_x="'WBP Minggu', 'LWBP Minggu', 'WBP Senin', 'LWBP Senin', 'WBP Selasa', 'LWBP Selasa', 'WBP Rabu', 'LWBP Rabu', 'WBP Kamis', 'LWBP Kamis', 'WBP Jumat', 'LWBP Jumat', 'WBP Sabtu', 'LWBP Sabtu'";
@@ -67,7 +67,7 @@
       $_SESSION['grafik']='cluster3';
       echo "Set Cluster 3 <br /><hr/>";
       echo "<br />";
-      echo '<a href="testing3.php"><i class="fa fa fa-cogs"></i> Data Testing Set Cluster 3</a>';
+      echo '<a href="testingData.php"><i class="fa fa fa-cogs"></i> Lihat Data Testing</a>';
       echo "<br />";
       echo '<a href="grafik3.php"><i class="fa fa-bar-chart"></i> Grafik Testing Set Cluster 3</a>';
       ////////////////////////////////////////// Grafik 3
@@ -115,7 +115,7 @@
       $_SESSION['grafik']='cluster4';
       echo "Set Cluster 4 <br /><hr/>";
       echo "<br />";
-      echo '<a href="testing4.php"><i class="fa fa fa-cogs"></i> Data Testing Set Cluster 4</a>';
+      echo '<a href="testingData.php"><i class="fa fa fa-cogs"></i> Lihat Data Testing</a>';
       echo "<br />";
       ////////////////////////////////////////// Grafik 4
       $sumbu_x="'WBP Minggu', 'LWBP Minggu', 'WBP Senin', 'LWBP Senin', 'WBP Selasa', 'LWBP Selasa', 'WBP Rabu', 'LWBP Rabu', 'WBP Kamis', 'LWBP Kamis', 'WBP Jumat', 'LWBP Jumat', 'WBP Sabtu', 'LWBP Sabtu'";
@@ -171,7 +171,7 @@
       $_SESSION['grafik']='cluster5';
       echo "Set Cluster 5 <br /><hr/>";
       echo "<br />";
-      echo '<a href="testing5.php"><i class="fa fa fa-cogs"></i> Data Testing Set Cluster 5</a>';
+      echo '<a href="testingData.php"><i class="fa fa fa-cogs"></i> Lihat Data Testing</a>';
       echo "<br />";
       echo '<a href="grafik5.php"><i class="fa fa-bar-chart"></i> Grafik Testing Set Cluster 5</a>';
       ////////////////////////////////////////// Grafik 5
@@ -236,7 +236,7 @@
       $_SESSION['grafik']='cluster6';
       echo "Set Cluster 6 <br /><hr/>";
       echo "<br />";
-      echo '<a href="testing6.php"><i class="fa fa fa-cogs"></i> Data Testing Set Cluster 6</a>';
+      echo '<a href="testingData.php"><i class="fa fa fa-cogs"></i> Lihat Data Testing</a>';
       echo "<br />";
       echo '<a href="grafik6.php"><i class="fa fa-bar-chart"></i> Grafik Testing Set Cluster 6</a>';
 
