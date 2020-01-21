@@ -18,6 +18,7 @@
     echo "Set Cluster 5 : ".number_format($_SESSION['DB_training5'],3)."<br />";
     echo "Set Cluster 6 : ".number_format($_SESSION['DB_training6'],3)."<br /><br /><hr/>";
     $dbi_optimum=min($_SESSION['DB_training2'],$_SESSION['DB_training3'],$_SESSION['DB_training4'],$_SESSION['DB_training5'],$_SESSION['DB_training6']);
+    $_SESSION['dbiOpt'] = $dbi_optimum;
     echo "Set Cluster Terbaik adalah : ";
     echo number_format($dbi_optimum,3)." - ";
     if($dbi_optimum==$_SESSION['DB_training2']) {
