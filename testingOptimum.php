@@ -7,6 +7,7 @@
 
 <body>
     <div class="ui container" style="padding-top:14px!important">
+      <?php include 'comp/menu.php'; ?>
         <a href="testingData.php" class="ui success button">Kembali</a>
         <?php
         $query = $db->query("SELECT * FROM tb_testing WHERE id_pelanggan = '$idpel'");

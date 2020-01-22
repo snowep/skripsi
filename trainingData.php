@@ -5,12 +5,11 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="dist/css/semantic.min.css">
-    <link rel="stylesheet" href="dist/css/component/icon.css">
   </head>
   <body>
     <?php include 'comp/menu.php'; ?>
-    <div class="ui container" style="padding-top:50px!important;">
-      <a href="trainingData.php" class="ui positive button">Lihat data Training</a>
+    <div class="ui container" style="padding-top:14px!important">
+      <a href="testingData.php" class="ui positive button">Lihat data Testing</a>
       <table class="ui celled center aligned collapsing small table">
         <thead>
           <tr>
@@ -34,7 +33,7 @@
           </tr>
         </thead>
         <tbody>
-          <?php $query = $db->query("SELECT * FROM tb_testing");
+          <?php $query = $db->query("SELECT * FROM tb_training");
           while ($result = $query->fetch()) {
           ?>
           <tr>
@@ -42,7 +41,7 @@
             <?php for ($i=1; $i < 15; $i++) { ?>
             <td><?php echo number_format($result[$i], 3) ?></td>
             <?php } ?>
-            <td> <a href="deleteTesting.php?id_pelanggan=<?php echo $result[0]?>">Hapus</a> | <a href="testingOptimum.php?id_pelanggan=<?php echo $result[0]?>">Testing</a> </td>
+            <td> <a href="deleteTraning.php?id_pelanggan=<?php echo $result[0]?>">Hapus</a> </td>
           </tr>
           <?php
           } ?>

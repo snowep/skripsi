@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="dist/css/semantic.min.css">
   </head>
   <body>
-    <div class="ui grid container" style="margin: 40px!important">
+    <div class="ui grid container" style="margin: 40px!important"><?php include 'comp/menu-right.php'; ?>
       <br>
       <div class="row">
         <h2>Training set Cluster 3</h2>
@@ -753,11 +753,6 @@
      </script>
         <div id="container"></div>
         </div>
-        <a href="cluster2.php" class="ui primary button">Training set Cluster 2</a>
-        <a href="cluster3.php" class="ui disabled button">Training set Cluster 3</a>
-        <a href="cluster4.php" class="ui primary button">Training set Cluster 4</a>
-        <a href="cluster5.php" class="ui primary button">Training set Cluster 5</a>
-        <a href="cluster6.php" class="ui primary button">Training set Cluster 6</a>
       </div>
     </div>
   </body>
