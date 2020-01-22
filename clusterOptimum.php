@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="dist/css/semantic.min.css">
 </head>
 <body>
-  <div class="ui container" style="margin-top:40px">
+  <div class="ui container" style="margin-top:40px"><?php include 'comp/menu.php'; ?>
     <h3>HASIL SET CLUSTER OPTIMUM</h3>
     <?php
     echo "<br />Nilai DBI : <br />";

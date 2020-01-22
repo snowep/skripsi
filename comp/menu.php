@@ -18,4 +18,5 @@
       </div>
     </div>
     <a href="clusterOptimum.php" class="item">Cluster Optimum</a>
+    <a href="report.php" class="item">Report</a>
   </div>

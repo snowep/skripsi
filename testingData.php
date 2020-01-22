@@ -10,7 +10,7 @@
   <body>
     <?php include 'comp/menu.php'; ?>
     <div class="ui container" style="padding-top:50px!important;">
-      <a href="trainingData.php" class="ui positive button">Lihat data Training</a>
+      <a href="trainingData.php" class="ui positive button">Lihat data Training</a> <a href="importDataTraining.php" class="ui priamry button">Upload Data Testing</a>
       <table class="ui celled center aligned collapsing small table">
         <thead>
           <tr>
@@ -42,7 +42,7 @@
             <?php for ($i=1; $i < 15; $i++) { ?>
             <td><?php echo number_format($result[$i], 3) ?></td>
             <?php } ?>
-            <td> <a href="deleteTesting.php?id_pelanggan=<?php echo $result[0]?>">Hapus</a> | <a href="testingOptimum.php?id_pelanggan=<?php echo $result[0]?>">Testing</a> </td>
+            <td> <a href="deleteTestingData.php?id_pelanggan=<?php echo $result[0]?>">Hapus</a> | <a href="testingOptimum.php?id_pelanggan=<?php echo $result[0]?>">Testing</a> </td>
           </tr>
           <?php
           } ?>
