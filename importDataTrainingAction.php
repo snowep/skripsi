@@ -25,7 +25,6 @@
          $D_WBP_7 = $worksheet->getCellByColumnAndRow(12, $row)->getValue();
          $D_LWBP_7 = $worksheet->getCellByColumnAndRow(13, $row)->getValue();
          $tgl = date('d F Y');
-         echo $Da_WBP_1;
          ini_set('max_execution_time', 300);
          $query = $connect->query("SELECT * FROM tb_testing");
          $rowCount = $query->rowCount();
@@ -66,7 +65,7 @@
                '$D_LWBP_6',
                '$D_WBP_7',
                '$D_LWBP_7','$tgl','','')");
-         header("location:testingData.php");
+         // header("location:testingData.php");
        }
      }
    }
