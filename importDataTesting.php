@@ -8,9 +8,9 @@
     <div class="container">
       <div class="row">
         <div class="col-sm-3">
-          <form class="form-horizontal" name="myForm" id="export_excel" action="importDataTrainingAction.php" method="post" enctype="multipart/form-data">
+          <form class="form-horizontal" name="myForm" id="export_excel" action="importDataTestingAction.php" method="post" enctype="multipart/form-data">
             <div class="box-body">
-              <p>Pilih file training:</p>
+              <p>Pilih file testing:</p>
               <div class="form-group">
                 <div class="col-sm-10">
                   <input type="file" id="excel_file" name="excel_file" class="form-control-file"/>

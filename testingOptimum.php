@@ -2,7 +2,8 @@
 <head>
     <title></title>
     <?php include 'database.php'; session_start(); $idpel = $_GET['id_pelanggan'] ?>
-    <link rel="stylesheet" href="dist/css/semantic.min.css">
+    <link rel="stylesheet" href="dist/css/semantic.min.css"><script src="js/jquery-latest.min.js" type="text/javascript"></script>
+    <script src="js/highcharts.js"></script>
 </head>
 
 <body>
@@ -863,7 +864,34 @@
             }
             ?>
         <?php }
+        $sumbu_x="'WBP Minggu', 'LWBP Minggu', 'WBP Senin', 'LWBP Senin', 'WBP Selasa', 'LWBP Selasa', 'WBP Rabu', 'LWBP Rabu', 'WBP Kamis', 'LWBP Kamis', 'WBP Jumat', 'LWBP Jumat', 'WBP Sabtu', 'LWBP Sabtu'";
+
+        $qry="SELECT * FROM tb_testing WHERE id_pelanggan = '$idpel'";
+        $result=$db->query($qry);
+        while($res=$result->fetch()){
+          $sumbu_y = $res['Daya_WBP_1'].",".$res['Daya_LWBP_1'].",".$res['Daya_WBP_2'].",".$res['Daya_LWBP_2'].",".$res['Daya_WBP_3'].",".$res['Daya_LWBP_3'].",".$res['Daya_WBP_4'].",".$res['Daya_LWBP_4'].",".$res['Daya_WBP_5'].",".$res['Daya_LWBP_5'].",".$res['Daya_WBP_6'].",".$res['Daya_LWBP_6'].",".$res['Daya_WBP_7'].",".$res['Daya_LWBP_7'];
+        }
         ?>
+        <script language="javascript" type="text/javascript">
+        var chart;
+        $(document).ready(function(){
+          chart = new Highcharts.Chart({
+            //Type: line / bar / column
+            chart: {renderTo: 'container', type: 'line'},
+            title: {text: 'Pola Penggunaan Daya Pelanggan'},
+            xAxis: {categories: [<?php echo $sumbu_x; ?>]},
+            yAxis: {title: {text: '<?php echo 'Daya'; ?>'}, plotLines: [{ value: 0, width: 1, color: '#808080'}]},
+            //fungsi tooltip untuk menampikan data di titik tertentu
+            tooltip: {formatter: function() {return 'Informasi	: <b>'+ '</b><br/>'+ this.series.name + ' ' + this.x + ' = <b>'+ this.y  +'</b>volt';}},
+            //isi datanya
+            series: [
+              {name: 'Pelanggan <?php echo $idpel ?>', data: [<?php echo $sumbu_y; ?>]},
+            ]
+          });
+        });
+        </script>
+
+        <div id="container"></div>
     </div>
 </body>
 </html>

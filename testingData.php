@@ -9,8 +9,7 @@
   </head>
   <body>
     <?php include 'comp/menu.php'; ?>
-    <div class="ui container" style="padding-top:50px!important;">
-      <a href="trainingData.php" class="ui positive button">Lihat data Training</a> <a href="importDataTraining.php" class="ui priamry button">Upload Data Testing</a>
+    <div class="ui container" style="padding-top:50px!important;"><a href="importDataTesting.php" class="ui priamry button">Upload Data Testing</a>
       <table class="ui celled center aligned collapsing small table">
         <thead>
           <tr>

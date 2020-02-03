@@ -9,7 +9,6 @@
   <body>
     <?php include 'comp/menu.php'; ?>
     <div class="ui container" style="padding-top:14px!important">
-      <a href="testingData.php" class="ui positive button">Lihat data Testing</a>
       <table class="ui celled center aligned collapsing small table">
         <thead>
           <tr>

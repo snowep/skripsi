@@ -17,7 +17,32 @@
       ?>
         <p>ID Pelanggan: <?php echo $result['id_pelanggan']; ?></p>
         <p>Status Penggunaan: <b><?php echo $result['status']; ?></b></p>
-        <p>Tindakan: <br>- <b>Segera Lakukan pengecekkan di lokasi pelanggan.<br>- Lakukan pemutusan sementara jika pelanggan terbukti melakukan pencurian.</b></p>
+        <p>Tindakan: <br>
+          <ol>
+            <li>
+              Segera lakukan pemeriksaan di lokasi pelanggan.
+            </li>
+            <li>
+              Jika pelanggan terbukti melakukan kecurangan:
+              <ul>
+                <li>
+                  Undang pelanggan ke kantor PLN untuk dibicarakan lebih lanjut.
+                </li>
+                <li>
+                  Lakukan pemutusan sementara terhadap pelanggan. Pemutusan dilakukan hingga pelanggan datang memenuhi undangan PLN
+                </li>
+              </ul>
+            </li>
+            <li>
+              Jika pelanggan tidak terbukti melakukan kecurangan:
+              <ul>
+                <li>Periksa segel di AMR.</li>
+                <li>Periksa kembali load profile pelanggan yang bersangkutan.</li>
+                <li>Periksa meter log pelanggan.</li>
+                <li>Lakukan koreksi pada AMR.</li>
+              </ul>
+            </li>
+          </ol>
       <?php
       }
       ?>
