@@ -8,9 +8,9 @@
     <link rel="stylesheet" href="dist/css/component/icon.css">
   </head>
   <body>
-    <?php include 'comp/menu.php'; ?>
     <div class="ui container" style="padding-top:50px!important;">
-      <h1>Lihat Report</h1>
+      <h1>Surat Penugasan Kerja</h1><button class="ui button" onclick="myFunction()"><i class="print icon"></i>Cetak Halaman</button>
+      <br><br><br><br>
       <?php
       $query = $db->query("SELECT * FROM tb_testing WHERE id_pelanggan = '$idpel'");
       while ($result = $query->fetch()) {
@@ -48,8 +48,13 @@
       ?>
       <br>
       <br>
-      <a href="printReportPage.php?id_pelanggan=<?php echo $idpel; ?>" class="ui teal button">Cetak Halaman</a>
 
     </div>
   </body>
+
+  <script>
+  function myFunction() {
+    window.print();
+  }
+  </script>
 </html>
