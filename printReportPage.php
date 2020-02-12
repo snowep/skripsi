@@ -9,7 +9,8 @@
   </head>
   <body>
     <div class="ui container" style="padding-top:50px!important;">
-      <h1>Surat Penugasan Kerja</h1><button class="ui button" onclick="myFunction()"><i class="print icon"></i>Cetak Halaman</button>
+      <h1>Tindakan</h1><button class="ui button" onclick="myFunction()"><i class="print icon"></i>Cetak Halaman</button>
+      <a class="ui yellow button" href="reportPrint.php">Cetak Surat Penugasan Kerja</a>
       <br><br><br><br>
       <?php
       $query = $db->query("SELECT * FROM tb_testing WHERE id_pelanggan = '$idpel'");
