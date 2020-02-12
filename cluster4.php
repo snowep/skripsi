@@ -23,7 +23,7 @@
             $acak_C3 = rand(1, $rowCount);
             $acak_C4 = rand(1, $rowCount);
           } while ($acak_C1 == $acak_C2 && $acak_C1 == $acak_C3 && $acak_C1 == $acak_C4 && $acak_C2 == $acak_C3 && $acak_C2 == $acak_C4 && $acak_C3 == $acak_C4);
-        ?>.
+        ?>
       </div>
       <div class="row">
         <div class="fifteen wide column">
